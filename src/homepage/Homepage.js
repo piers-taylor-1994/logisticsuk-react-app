@@ -38,7 +38,7 @@ function Drivers() {
     }
 
     let rows = drivers.map(driver => {
-        let rest = 0, available = 0, drive = 0, work = 0;
+        let rest = 0, available = 0, drive = 0, work = 0, total = 0;
         let tracedDays = [];
 
         driver.traces.forEach(trace => {
@@ -60,6 +60,8 @@ function Drivers() {
                     default:
                         break;
                 }
+
+                total += activity.duration;
             });
         })
 
@@ -72,6 +74,7 @@ function Drivers() {
                 <span>{available}</span>
                 <span>{drive}</span>
                 <span>{work}</span>
+                <span>{total}</span>
                 <DayBoxes tracedDays={tracedDays} />
             </div>
         )
@@ -94,6 +97,7 @@ function Drivers() {
                     <span>A</span>
                     <span>D</span>
                     <span>W</span>
+                    <span>Total</span>
                 </div>
                 <div className="days-header">
                     <span>Mon</span>
